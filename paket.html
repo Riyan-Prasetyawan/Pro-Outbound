@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilihan Paket Outbound & Gathering | Pro Outbound</title>
+    <meta name="description" content="Daftar harga paket outbound, rafting, paintball, dan gathering kantor terlengkap 2026. Transparan, hemat, dan fasilitas lengkap.">
+
+    <style>
+        /* --- COPY STYLE DARI INDEX.HTML (BASE STYLES) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        
+        :root {
+            --primary: #2e7d32; /* Hijau Alam */
+            --secondary: #ff6f00; /* Oranye Semangat */
+            --dark: #1a1a1a;
+            --grey: #666;
+            --light: #f4f7f6;
+            --white: #fff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        body { line-height: 1.6; color: var(--dark); background-color: #fff; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; width: 100%; height: auto; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .section-title { font-size: 2.5rem; margin-bottom: 15px; color: var(--primary); text-align: center; font-weight: 800; }
+        .section-subtitle { text-align: center; margin-bottom: 60px; color: var(--grey); font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* BUTTONS */
+        .btn { display: inline-block; padding: 12px 30px; background: var(--secondary); color: var(--white); border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 111, 0, 0.3); text-align: center; }
+        .btn:hover { background: #e65100; transform: translateY(-3px); }
+        .btn-outline { background: transparent; border: 2px solid var(--white); box-shadow: none; }
+        .btn-outline:hover { background: var(--white); color: var(--primary); }
+        .btn-small { padding: 8px 20px; font-size: 0.9rem; width: 100%; }
+
+        /* NAVBAR (Sama Persis) */
+        nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; height: 80px; display: flex; align-items: center; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-weight: 600; color: #333; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
+
+        /* --- PAGE HEADER (Hero Image Static) --- */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: -80px; /* Counter navbar */
+            padding-top: 80px;
+        }
+        .page-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- PACKAGE FILTER TABS --- */
+        .filter-tabs { display: flex; justify-content: center; gap: 15px; margin-bottom: 50px; flex-wrap: wrap; }
+        .filter-btn { padding: 10px 25px; border: 2px solid #eee; border-radius: 30px; background: white; cursor: pointer; font-weight: 600; color: var(--grey); transition: 0.3s; }
+        .filter-btn:hover, .filter-btn.active { background: var(--primary); color: white; border-color: var(--primary); }
+
+        /* --- PACKAGE CARDS (Enhanced) --- */
+        .package-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
+        .package-card { 
+            background: white; border-radius: 15px; overflow: hidden; box-shadow: var(--shadow); 
+            transition: 0.3s; position: relative; border: 1px solid #f0f0f0; display: flex; flex-direction: column;
+        }
+        .package-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        
+        /* Ribbon Best Seller */
+        .ribbon { position: absolute; top: 15px; right: -30px; background: var(--secondary); color: white; padding: 5px 30px; transform: rotate(45deg); font-size: 0.8rem; font-weight: bold; z-index: 2; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+
+        .pkg-img { height: 220px; overflow: hidden; position: relative; }
+        .pkg-img img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .package-card:hover .pkg-img img { transform: scale(1.1); }
+        
+        .pkg-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .pkg-title { font-size: 1.4rem; font-weight: 800; margin-bottom: 5px; color: var(--dark); }
+        .pkg-category { font-size: 0.85rem; color: var(--secondary); text-transform: uppercase; font-weight: 700; margin-bottom: 15px; letter-spacing: 1px; }
+        
+        .pkg-price { margin-bottom: 20px; }
+        .price-tag { font-size: 1.8rem; font-weight: 800; color: var(--primary); }
+        .price-unit { font-size: 0.9rem; color: var(--grey); }
+
+        .pkg-features { list-style: none; margin-bottom: 25px; flex-grow: 1; }
+        .pkg-features li { margin-bottom: 10px; padding-left: 25px; position: relative; font-size: 0.95rem; color: #555; }
+        .pkg-features li::before { content: '✓'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        /* --- CUSTOM PACKAGE SECTION --- */
+        .custom-pkg-section { background: var(--light); text-align: center; }
+        .custom-box { max-width: 800px; margin: 0 auto; background: white; padding: 50px; border-radius: 20px; box-shadow: var(--shadow); }
+
+        /* FOOTER & RESPONSIVE (Sama dengan Index) */
+        footer { background: #111; color: #aaa; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
+        .footer-col h3 { color: white; margin-bottom: 25px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
+        .copyright { text-align: center; border-top: 1px solid #222; padding-top: 30px; margin-top: 50px; }
+
+        /* FLOATING WA */
+        .float-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s; }
+        .float-wa:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: white; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .page-header h1 { font-size: 2rem; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .filter-tabs { gap: 10px; }
+            .filter-btn { padding: 8px 15px; font-size: 0.9rem; }
+        }
+
+        /* Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+       <nav>
+        <div class="container nav-container">
+            <div class="logo">PRO <span>OUTBOUND</span></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="layanan.html">Layanan</a></li>
+                <li><a href="paket.html">Paket</a></li>
+                <li><a href="artikel.html">Artikel</a></li>
+                <li><a href="https://wa.me/62895639068080" class="btn">Booking Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <header class="page-header">
+        <div class="container reveal">
+            <h1>Pilihan Paket Outbound</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> &nbsp;/&nbsp; Daftar Harga
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title reveal">Paket Terpopuler 2026</div>
+            <p class="section-subtitle reveal">Pilih paket yang sesuai dengan kebutuhan dan budget perusahaan Anda. Harga transparan tanpa biaya tersembunyi.</p>
+
+            <div class="filter-tabs reveal">
+                <button class="filter-btn active">Semua Paket</button>
+                <button class="filter-btn">1 Hari (One Day)</button>
+                <button class="filter-btn">Menginap (2D1N)</button>
+                <button class="filter-btn">Adventure</button>
+            </div>
+            
+            <div class="package-grid reveal">
+                
+                <div class="package-card">
+                    <div class="ribbon">POPULER</div>
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1526671046505-18c7287754d9?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Fun Outbound">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">One Day Activity</div>
+                        <h3 class="pkg-title">Fun Team Building</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 250.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Durasi 6-8 Jam</li>
+                            <li>Ice Breaking & Fun Games</li>
+                            <li>Team Building Simulation</li>
+                            <li>Makan Siang & 1x Snack</li>
+                            <li>Sound System & Fasilitator</li>
+                            <li>Dokumentasi Foto</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Fun%20Team%20Building" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Rafting">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">Adventure</div>
+                        <h3 class="pkg-title">Rafting Adventure</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 350.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Rafting Sungai Elo/Ayung (12KM)</li>
+                            <li>Guide & Rescue Team</li>
+                            <li>Peralatan Standar Safety</li>
+                            <li>Makan Siang Prasmanan</li>
+                            <li>Kelapa Muda</li>
+                            <li>Transportasi Lokal (Shuttle)</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Rafting" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Hiking">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">Experiential</div>
+                        <h3 class="pkg-title">Amazing Race</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 375.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Konsep Petualangan Mencari Jejak</li>
+                            <li>Peta & Kompas Games</li>
+                            <li>Pos Tantangan (Problem Solving)</li>
+                            <li>Makan Siang & Snack</li>
+                            <li>Hadiah untuk Pemenang</li>
+                            <li>Master Game Berpengalaman</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Amazing%20Race" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="ribbon">PREMIUM</div>
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1517824806704-9040b037703b?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Gathering">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">Menginap (2 Days 1 Night)</div>
+                        <h3 class="pkg-title">Fullboard Gathering</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 650.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Akomodasi Hotel/Villa (Sharing)</li>
+                            <li>3x Makan & 2x Coffee Break</li>
+                            <li>Full Outbound Program</li>
+                            <li>Malam Keakraban (Api Unggun)</li>
+                            <li>Elektone / Akustik Musik</li>
+                            <li>Dokumentasi Video & Drone</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Gathering%202D1N" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1478131143081-80f7f84ca84d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Camping">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">Menginap (2 Days 1 Night)</div>
+                        <h3 class="pkg-title">Nature Camping</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 450.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Tenda Dome Kapasitas 3-4 Orang</li>
+                            <li>Sleeping Bag & Matras</li>
+                            <li>Makan 3x (Prasmanan/Box)</li>
+                            <li>Api Unggun & Jagung Bakar</li>
+                            <li>Fun Hiking / Trekking</li>
+                            <li>P3K Standar</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Camping" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+                <div class="package-card">
+                    <div class="pkg-img">
+                        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Paintball">
+                    </div>
+                    <div class="pkg-content">
+                        <div class="pkg-category">War Game</div>
+                        <h3 class="pkg-title">Paintball War</h3>
+                        <div class="pkg-price">
+                            <span class="price-tag">Rp 185.000</span>
+                            <span class="price-unit">/ pax</span>
+                        </div>
+                        <ul class="pkg-features">
+                            <li>Senjata Semi Otomatis</li>
+                            <li>40 Butir Peluru</li>
+                            <li>Seragam Army, Google Mask & Rompi</li>
+                            <li>Instruktur & Wasit</li>
+                            <li>Air Mineral</li>
+                            <li>Standard Arena Hutan Buatan</li>
+                        </ul>
+                        <a href="https://wa.me/628123456789?text=Halo%20saya%20tertarik%20Paket%20Paintball" class="btn btn-small">Pilih Paket ini</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding custom-pkg-section">
+        <div class="container reveal">
+            <div class="custom-box">
+                <h2 style="font-size: 2rem; color: var(--primary); margin-bottom: 15px;">Butuh Paket Custom?</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem;">Punya budget khusus atau ingin kombinasi kegiatan (misal: Rafting + Paintball + Menginap)? Kami bisa buatkan penawaran khusus untuk Anda.</p>
+                <a href="#contact" class="btn" style="padding: 15px 40px;">Minta Penawaran Custom</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding" style="background: white;">
+        <div class="container">
+            <h2 class="section-title reveal">Hubungi Kami</h2>
+            <p class="section-subtitle reveal">Segera booking sebelum jadwal penuh!</p>
+            <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+                <p>Silakan hubungi kami melalui WhatsApp untuk respon tercepat atau isi form di halaman Beranda.</p>
+                <br>
+                <a href="https://wa.me/628123456789" class="btn btn-outline" style="background: #25D366; border-color: #25D366; color: white;">Chat WhatsApp Sekarang</a>
+            </div>
+        </div>
+    </section>
+
+    <footer style="margin-top: 50px;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>PRO OUTBOUND</h3>
+                    <p style="color:#aaa;">Partner terbaik untuk pengembangan SDM dan rekreasi perusahaan Anda. Membangun tim yang solid melalui petualangan yang menyenangkan.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="paket.html">Paket Harga</a></li>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Ikuti Kami</h3>
+                    <ul>
+                        <li><a href="#">📷 Instagram</a></li>
+                        <li><a href="#">📘 Facebook</a></li>
+                        <li><a href="#">▶ YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Pro Outbound Indonesia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+    <style>
+    /* Container untuk membungkus kedua tombol agar rapi vertikal */
+    .fab-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column; /* Menyusun tombol ke atas */
+        gap: 15px; /* Jarak antar tombol */
+        z-index: 9999; /* Pastikan selalu di paling atas layer */
+    }
+
+    /* Style Dasar Tombol */
+    .fab-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal halus */
+        text-decoration: none;
+        border: none;
+        outline: none;
+    }
+
+    .fab-btn:hover {
+        transform: scale(1.1) translateY(-5px); /* Efek membesar saat hover */
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    /* 1. Style Khusus Tombol WhatsApp */
+    .fab-wa {
+        background: #25D366; /* Warna Hijau Resmi WA */
+        color: white;
+        position: relative;
+    }
+    
+    /* Efek Pulse (Denyut) pada WA agar menarik perhatian */
+    .fab-wa::before {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        background: #25D366;
+        opacity: 0.5;
+        z-index: -1;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* 2. Style Khusus Tombol Back to Top */
+    .fab-top {
+        background: #1a1a1a; /* Warna Hitam/Dark */
+        color: white;
+        opacity: 0; /* Default Sembunyi */
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+    }
+
+    /* Class yang ditambahkan JS saat scroll ke bawah */
+    .fab-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Ukuran Icon SVG */
+    .fab-btn svg {
+        width: 32px;
+        height: 32px;
+        fill: currentColor;
+    }
+</style>
+
+<div class="fab-container">
+    <div class="fab-btn fab-top" id="btnBackToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Kembali ke Atas">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </div>
+
+        <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20info%20paket%20outbound." target="_blank" class="fab-btn fab-wa" title="Chat WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+</div>
+
+<script>
+    // Logic Javascript untuk mendeteksi Scroll
+    window.addEventListener('scroll', function() {
+        const btnTop = document.getElementById('btnBackToTop');
+        // Jika scroll lebih dari 300px ke bawah, munculkan tombol
+        if (window.scrollY > 300) {
+            btnTop.classList.add('show');
+        } else {
+            btnTop.classList.remove('show');
+        }
+    });
+</script>
+</body>
+</html>

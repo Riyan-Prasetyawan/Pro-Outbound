@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Layanan & Program Outbound | Pro Outbound</title>
+    <meta name="description" content="Pilihan program outbound training, team building, capacity building, dan adventure trip untuk perusahaan dan instansi.">
+
+    <style>
+        /* --- COPY STYLE DARI INDEX.HTML (BASE STYLES) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; scroll-behavior: smooth; }
+        
+        :root {
+            --primary: #2e7d32; /* Hijau Alam */
+            --secondary: #ff6f00; /* Oranye Semangat */
+            --dark: #1a1a1a;
+            --grey: #666;
+            --light: #f4f7f6;
+            --white: #fff;
+            --shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        body { line-height: 1.6; color: var(--dark); background-color: #fff; overflow-x: hidden; }
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        ul { list-style: none; }
+        img { max-width: 100%; display: block; width: 100%; height: auto; }
+        
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 0 15px; }
+        .section-padding { padding: 100px 0; }
+        .section-title { font-size: 2.5rem; margin-bottom: 15px; color: var(--primary); text-align: center; font-weight: 800; }
+        .section-subtitle { text-align: center; margin-bottom: 60px; color: var(--grey); font-size: 1.1rem; max-width: 700px; margin-left: auto; margin-right: auto; }
+
+        /* BUTTONS */
+        .btn { display: inline-block; padding: 12px 30px; background: var(--secondary); color: var(--white); border-radius: 50px; font-weight: 700; border: none; cursor: pointer; transition: 0.3s; box-shadow: 0 5px 15px rgba(255, 111, 0, 0.3); text-align: center; }
+        .btn:hover { background: #e65100; transform: translateY(-3px); }
+        .btn-outline { background: transparent; border: 2px solid var(--primary); color: var(--primary); font-weight: bold; padding: 10px 25px; border-radius: 50px; }
+        .btn-outline:hover { background: var(--primary); color: white; }
+
+        /* NAVBAR */
+        nav { background: rgba(255, 255, 255, 0.98); backdrop-filter: blur(10px); box-shadow: 0 2px 20px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; height: 80px; display: flex; align-items: center; }
+        .nav-container { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .logo { font-size: 1.8rem; font-weight: 900; color: var(--primary); text-transform: uppercase; }
+        .logo span { color: var(--secondary); }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
+        .nav-links a { font-weight: 600; color: #333; position: relative; }
+        .nav-links a:hover, .nav-links a.active { color: var(--secondary); }
+        .menu-toggle { display: none; font-size: 1.8rem; cursor: pointer; }
+
+        /* --- PAGE HEADER --- */
+        .page-header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-top: -80px;
+            padding-top: 80px;
+        }
+        .page-header h1 { font-size: 3rem; font-weight: 800; margin-bottom: 10px; }
+        .breadcrumb { font-size: 1.1rem; opacity: 0.9; }
+
+        /* --- SERVICE DETAIL (ZIG-ZAG LAYOUT) --- */
+        .service-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+        }
+        /* Membalik urutan kolom untuk baris genap */
+        .service-row:nth-child(even) .service-img { order: 2; }
+        .service-row:nth-child(even) .service-content { order: 1; }
+
+        .service-img img {
+            border-radius: 20px;
+            box-shadow: 20px 20px 0 rgba(46, 125, 50, 0.1);
+            transition: 0.5s;
+        }
+        .service-img img:hover { transform: scale(1.02); }
+
+        .service-content h3 { font-size: 2rem; color: var(--primary); margin-bottom: 20px; font-weight: 800; }
+        .service-content p { color: #555; margin-bottom: 20px; font-size: 1.05rem; }
+        .service-features { margin-bottom: 30px; }
+        .service-features li { margin-bottom: 10px; padding-left: 25px; position: relative; font-weight: 600; color: var(--dark); }
+        .service-features li::before { content: '✔'; color: var(--secondary); position: absolute; left: 0; font-weight: bold; }
+
+        /* --- METHODOLOGY --- */
+        .method-section { background: var(--light); text-align: center; }
+        .method-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px; margin-top: 50px; }
+        .method-card { background: white; padding: 30px; border-radius: 15px; box-shadow: var(--shadow); position: relative; }
+        
+        /* Garis penghubung antar step (Desktop only) */
+        .method-card::after { 
+            content: '➜'; position: absolute; right: -25px; top: 50%; transform: translateY(-50%); 
+            font-size: 1.5rem; color: var(--primary); opacity: 0.5;
+        }
+        .method-card:last-child::after { display: none; }
+
+        .method-number { 
+            width: 50px; height: 50px; background: var(--primary); color: white; 
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            font-size: 1.5rem; font-weight: bold; margin: 0 auto 20px; 
+        }
+        .method-card h4 { margin-bottom: 10px; font-size: 1.2rem; }
+        .method-card p { font-size: 0.9rem; color: var(--grey); }
+
+        /* --- CTA SECTION --- */
+        .cta-bottom { background: var(--dark); color: white; padding: 80px 0; text-align: center; }
+
+        /* FOOTER & RESPONSIVE */
+        footer { background: #111; color: #aaa; padding: 80px 0 30px; }
+        .footer-grid { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 50px; }
+        .footer-col h3 { color: white; margin-bottom: 25px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 5px; }
+        .copyright { text-align: center; border-top: 1px solid #222; padding-top: 30px; margin-top: 50px; }
+        .float-wa { position: fixed; bottom: 30px; right: 30px; background: #25D366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3); z-index: 2000; transition: 0.3s; }
+        .float-wa:hover { transform: scale(1.1); }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; flex-direction: column; position: absolute; top: 80px; left: 0; width: 100%; background: white; padding: 30px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); text-align: center; }
+            .nav-links.active { display: flex; }
+            .menu-toggle { display: block; }
+            .page-header h1 { font-size: 2rem; }
+            .service-row { grid-template-columns: 1fr; gap: 40px; }
+            .service-row:nth-child(even) .service-img { order: -1; } /* Reset order for mobile */
+            .service-row:nth-child(even) .service-content { order: 1; }
+            .method-grid { grid-template-columns: 1fr; gap: 20px; }
+            .method-card::after { content: '⬇'; right: 50%; top: auto; bottom: -25px; transform: translateX(50%); }
+            .footer-grid { grid-template-columns: 1fr; }
+        }
+
+        /* Animation */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+    </style>
+</head>
+<body>
+
+     <nav>
+        <div class="container nav-container">
+            <div class="logo">PRO <span>OUTBOUND</span></div>
+            <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tentang.html">Tentang</a></li>
+                <li><a href="layanan.html">Layanan</a></li>
+                <li><a href="paket.html">Paket</a></li>
+                <li><a href="artikel.html">Artikel</a></li>
+                <li><a href="https://wa.me/62895639068080" class="btn">Booking Now</a></li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <header class="page-header">
+        <div class="container reveal">
+            <h1>Layanan & Program</h1>
+            <div class="breadcrumb">
+                <a href="index.html">Beranda</a> &nbsp;/&nbsp; Layanan Kami
+            </div>
+        </div>
+    </header>
+
+    <section class="section-padding" style="padding-bottom: 50px;">
+        <div class="container text-center reveal">
+            <h2 class="section-title">Solusi Menyeluruh Pengembangan SDM</h2>
+            <p class="section-subtitle">Kami tidak hanya menyediakan permainan, tetapi sebuah program terstruktur yang dirancang untuk menjawab tantangan spesifik dalam organisasi Anda.</p>
+        </div>
+    </section>
+
+    <section class="section-padding">
+        <div class="container">
+            
+            <div class="service-row reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Team Building">
+                </div>
+                <div class="service-content">
+                    <h3>Team Building Training</h3>
+                    <p>Program utama kami yang berfokus pada dinamika kelompok. Melalui simulasi permainan (games) yang menantang, peserta diajak untuk memecahkan masalah bersama, berkomunikasi efektif, dan membangun kepercayaan.</p>
+                    <ul class="service-features">
+                        <li>Komunikasi Efektif & Koordinasi</li>
+                        <li>Leadership & Followership</li>
+                        <li>Problem Solving & Decision Making</li>
+                        <li>Meningkatkan "Sense of Belonging"</li>
+                    </ul>
+                    <a href="https://wa.me/628123456789" class="btn-outline">Konsultasi Program</a>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="service-content">
+                    <h3>Adventure & Recreation</h3>
+                    <p>Kegiatan berbasis petualangan alam bebas untuk memacu adrenalin sekaligus "stress release" dari rutinitas kantor. Sangat efektif untuk menyegarkan pikiran karyawan (healing).</p>
+                    <ul class="service-features">
+                        <li>Rafting (Arung Jeram)</li>
+                        <li>Paintball War Simulation</li>
+                        <li>Offroad Jeep Adventure</li>
+                        <li>Hiking & Trekking</li>
+                    </ul>
+                    <a href="paket.html" class="btn-outline">Lihat Paket Harga</a>
+                </div>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Adventure">
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Capacity Building">
+                </div>
+                <div class="service-content">
+                    <h3>Capacity Building (Indoor)</h3>
+                    <p>Selain kegiatan fisik, kami juga menyediakan pelatihan soft-skill di dalam ruangan (Indoor Training) atau motivasi session. Cocok dikombinasikan dengan Gala Dinner.</p>
+                    <ul class="service-features">
+                        <li>Character Building</li>
+                        <li>Service Excellence</li>
+                        <li>Motivation Session</li>
+                        <li>Management Games</li>
+                    </ul>
+                    <a href="https://wa.me/628123456789" class="btn-outline">Konsultasi Program</a>
+                </div>
+            </div>
+
+            <div class="service-row reveal">
+                <div class="service-content">
+                    <h3>Corporate & Family Gathering</h3>
+                    <p>Layanan event organizer lengkap (Fullboard) untuk acara tahunan perusahaan atau keluarga besar. Kami mengurus semuanya mulai dari akomodasi hingga hiburan.</p>
+                    <ul class="service-features">
+                        <li>Penginapan Hotel/Villa</li>
+                        <li>Gala Dinner & Entertainment</li>
+                        <li>Dokumentasi Video & Drone</li>
+                        <li>Transportasi Bus Pariwisata</li>
+                    </ul>
+                    <a href="paket.html" class="btn-outline">Lihat Paket Harga</a>
+                </div>
+                <div class="service-img">
+                    <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Gathering">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="section-padding method-section">
+        <div class="container">
+            <h2 class="section-title reveal">Metode Kami</h2>
+            <p class="section-subtitle reveal">Kami menerapkan siklus "Experiential Learning" agar materi meresap.</p>
+            
+            <div class="method-grid reveal">
+                <div class="method-card">
+                    <div class="method-number">1</div>
+                    <h4>Experience</h4>
+                    <p>Peserta melakukan aktivitas/games tantangan secara langsung.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-number">2</div>
+                    <h4>Reflect</h4>
+                    <p>Peserta merefleksikan apa yang dirasakan & terjadi saat aktivitas.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-number">3</div>
+                    <h4>Conceptualize</h4>
+                    <p>Fasilitator menarik kesimpulan dan menghubungkan dengan dunia kerja.</p>
+                </div>
+                <div class="method-card">
+                    <div class="method-number">4</div>
+                    <h4>Apply</h4>
+                    <p>Peserta berkomitmen menerapkan nilai baru di tempat kerja.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-bottom">
+        <div class="container reveal">
+            <h2 style="font-size: 2rem; margin-bottom: 20px;">Butuh Proposal Penawaran?</h2>
+            <p style="margin-bottom: 30px; font-size: 1.1rem; opacity: 0.9;">Kami siap mengirimkan proposal lengkap beserta opsi budgeting ke email Anda.</p>
+            <a href="https://wa.me/628123456789" class="btn" style="background: white; color: var(--dark);">Minta Proposal</a>
+        </div>
+    </section>
+
+    <footer style="margin-top: 0;">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>PRO OUTBOUND</h3>
+                    <p style="color:#aaa;">Partner terbaik untuk pengembangan SDM dan rekreasi perusahaan Anda. Membangun tim yang solid melalui petualangan yang menyenangkan.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="index.html">Beranda</a></li>
+                        <li><a href="tentang.html">Tentang Kami</a></li>
+                        <li><a href="paket.html">Paket Harga</a></li>
+                        <li><a href="artikel.html">Artikel</a></li>
+                        <li><a href="index.html#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Ikuti Kami</h3>
+                    <ul>
+                        <li><a href="#">📷 Instagram</a></li>
+                        <li><a href="#">📘 Facebook</a></li>
+                        <li><a href="#">▶ YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2026 Pro Outbound Indonesia. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        function toggleMenu() {
+            const nav = document.querySelector('.nav-links');
+            nav.classList.toggle('active');
+        }
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+    <style>
+    /* Container untuk membungkus kedua tombol agar rapi vertikal */
+    .fab-container {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        display: flex;
+        flex-direction: column; /* Menyusun tombol ke atas */
+        gap: 15px; /* Jarak antar tombol */
+        z-index: 9999; /* Pastikan selalu di paling atas layer */
+    }
+
+    /* Style Dasar Tombol */
+    .fab-btn {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efek membal halus */
+        text-decoration: none;
+        border: none;
+        outline: none;
+    }
+
+    .fab-btn:hover {
+        transform: scale(1.1) translateY(-5px); /* Efek membesar saat hover */
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+
+    /* 1. Style Khusus Tombol WhatsApp */
+    .fab-wa {
+        background: #25D366; /* Warna Hijau Resmi WA */
+        color: white;
+        position: relative;
+    }
+    
+    /* Efek Pulse (Denyut) pada WA agar menarik perhatian */
+    .fab-wa::before {
+        content: '';
+        position: absolute;
+        width: 100%; height: 100%;
+        border-radius: 50%;
+        background: #25D366;
+        opacity: 0.5;
+        z-index: -1;
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); opacity: 0.5; }
+        100% { transform: scale(1.5); opacity: 0; }
+    }
+
+    /* 2. Style Khusus Tombol Back to Top */
+    .fab-top {
+        background: #1a1a1a; /* Warna Hitam/Dark */
+        color: white;
+        opacity: 0; /* Default Sembunyi */
+        visibility: hidden;
+        transform: translateY(20px);
+        transition: all 0.4s ease;
+    }
+
+    /* Class yang ditambahkan JS saat scroll ke bawah */
+    .fab-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    /* Ukuran Icon SVG */
+    .fab-btn svg {
+        width: 32px;
+        height: 32px;
+        fill: currentColor;
+    }
+</style>
+
+<div class="fab-container">
+    <div class="fab-btn fab-top" id="btnBackToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'});" title="Kembali ke Atas">
+        <svg viewBox="0 0 24 24"><path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"/></svg>
+    </div>
+
+       <a href="https://wa.me/62895639068080?text=Halo%20Admin,%20saya%20tertarik%20info%20paket%20outbound." target="_blank" class="fab-btn fab-wa" title="Chat WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+    </a>
+</div>
+
+<script>
+    // Logic Javascript untuk mendeteksi Scroll
+    window.addEventListener('scroll', function() {
+        const btnTop = document.getElementById('btnBackToTop');
+        // Jika scroll lebih dari 300px ke bawah, munculkan tombol
+        if (window.scrollY > 300) {
+            btnTop.classList.add('show');
+        } else {
+            btnTop.classList.remove('show');
+        }
+    });
+</script>
+</body>
+</html>
